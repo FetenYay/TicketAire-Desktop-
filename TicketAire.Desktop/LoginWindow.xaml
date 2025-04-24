@@ -1,0 +1,79 @@
+﻿<Window x:Class="TicketAire.Desktop.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Login" 
+        Height="700" 
+        Width="500"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize">
+
+    <Border Background="#FF2D2D30" CornerRadius="10" BorderThickness="1" BorderBrush="#FF3E3E40">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" ShadowDepth="0" Color="#80000000"/>
+        </Border.Effect>
+
+        <Grid>
+            <!-- Background -->
+            <Border CornerRadius="10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FF252526" Offset="0"/>
+                        <GradientStop Color="#FF1E1E1F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <!-- Main Content -->
+            <Grid Margin="50">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,40">
+                    <materialDesign:PackIcon Kind="ShieldAccount" Width="80" Height="80" 
+                                         Foreground="#FF4FC3F7" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Welcome to TicketAire" FontSize="24" FontWeight="SemiBold" 
+                           Foreground="White" Margin="0,15,0,0"/>
+                    <TextBlock Text="Please enter your credentials" FontSize="14" 
+                           Foreground="#FFA0A0A0" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- Form -->
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" Width="350">
+                    <!-- Enterprise ID -->
+                    <TextBlock Text="Enterprise ID" Foreground="#FFA0A0A0" FontSize="13" Margin="0,0,0,8"/>
+                    <TextBox x:Name="txtEnterpriseId" Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         materialDesign:HintAssist.Hint="e.g., EMP12345" FontSize="14" Foreground="White" Margin="0,0,0,20"/>
+
+                    <!-- Access Key -->
+                    <TextBlock Text="Access Key" Foreground="#FFA0A0A0" FontSize="13" Margin="0,0,0,8"/>
+                    <PasswordBox x:Name="txtAccessKey" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                             materialDesign:HintAssist.Hint="Your secure access key" FontSize="14" Foreground="White" Margin="0,0,0,30"/>
+
+                    <!-- Login Button -->
+                    <Button x:Name="btnLogin" Content="LOG IN" Width="350" Height="45" Margin="0,0,0,15"
+                        Style="{StaticResource MaterialDesignRaisedButton}" Background="#FF4FC3F7"
+                        FontWeight="Bold" FontSize="14" Click="LogIn_Click"/>
+
+                    <!-- Error Message -->
+                    <TextBlock x:Name="lblError" Foreground="#FFFF6E6E" FontSize="12" 
+                           TextWrapping="Wrap" Visibility="Collapsed" Margin="0,0,0,20"/>
+
+                </StackPanel>
+            </Grid>
+
+            <!-- Close Button -->
+            <Button x:Name="btnClose" Style="{StaticResource MaterialDesignToolButton}" 
+                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10"
+                Foreground="#FFA0A0A0" Click="Close_Click">
+                <materialDesign:PackIcon Kind="Close"/>
+            </Button>
+        </Grid>
+    </Border>
+</Window>
